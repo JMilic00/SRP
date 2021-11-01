@@ -42,7 +42,12 @@ F = Fernet(key)
 //komanda s kojom enkriptiramo poruku
 ciphertext = F.encrypt(b"some word")
 //komanda s kojom dekriptiramo poruku
-F.decrypt(ciphertext
+F.decrypt(ciphertext)
+```
+Izlazak iz python shella
+
+```bash
+exit()
 ```
 
 ---
