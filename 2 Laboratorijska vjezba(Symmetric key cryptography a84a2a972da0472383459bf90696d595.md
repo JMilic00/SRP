@@ -102,7 +102,7 @@ if __name__=="__main__":
     brute_force()
 ```
 
-**Brute-force attack code 20 bita(nedovrsen)**
+**Brute-force attack code 22 bita(nedovrsen)**
 
 ```bash
 from multiprocessing import Pool
