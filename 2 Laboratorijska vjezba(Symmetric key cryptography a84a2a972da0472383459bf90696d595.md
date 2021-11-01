@@ -44,7 +44,7 @@ ciphertext = F.encrypt(b"some word")
 //komanda s kojom dekriptiramo poruku
 F.decrypt(ciphertext)
 ```
-Izlazak iz python shella
+*Izlazak iz python shella*
 
 ```bash
 exit()
