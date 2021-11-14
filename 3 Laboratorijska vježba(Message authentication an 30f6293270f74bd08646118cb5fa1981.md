@@ -150,7 +150,7 @@ def verify_MAC(key, signature, message):
         return True
 
 if __name__ == "__main__":
-		#LOOP ZA ŠETANJE
+	#LOOP ZA ŠETANJE
     **for ctr in range(1,11):
         msg_filename = f"order_{ctr}.txt"
         sig_filename = f"order_{ctr}.sig"
