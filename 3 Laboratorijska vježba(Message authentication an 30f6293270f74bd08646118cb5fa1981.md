@@ -159,7 +159,7 @@ if __name__ == "__main__":
         with open(sig_filename, "rb") as file:
             signature = file.read() 
 
-        key = "Milic_jakov".encode()
+        key = "milic_jakov".encode()
         is_authentic = verify_MAC(key, signature, content)
         
 	print(f'Message {content.decode():>45} {"OK" if is_authentic else "NOK":<6**
