@@ -162,5 +162,5 @@ if __name__ == "__main__":
         key = "Milic_jakov".encode()
         is_authentic = verify_MAC(key, signature, content)
         
-				print(f'Message {content.decode():>45} {"OK" if is_authentic else "NOK":<6**
+	print(f'Message {content.decode():>45} {"OK" if is_authentic else "NOK":<6**
 ```
