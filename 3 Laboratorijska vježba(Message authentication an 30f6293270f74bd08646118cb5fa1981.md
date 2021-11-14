@@ -114,7 +114,7 @@ if __name__ == "__main__":
 
 **IZAZAOV 2.**
 
-Sljedeći zadatak*(*izazov) je utvrditi točan poredak transakcija s dionicama.datoteke s dionicama nalaze se na lokalnom serveru ([http://a507-server.local/](http://a507-server.local/)) podatek smo downloadali pomocu **wget** programa.
+Sljedeći zadatak*(*izazov) je utvrditi točan poredak transakcija s dionicama.datoteke s dionicama nalaze se na lokalnom serveru ([http://a507-server.local/](http://a507-server.local/)) podatke smo downloadali pomoću **wget** programa.
 
 Sam Ključ je naše ime i prezime,cilj nam je izlistati savjete kronološki
 
