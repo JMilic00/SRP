@@ -116,7 +116,7 @@ if __name__ == "__main__":
 
 Sljedeći zadatak*(*izazov) je utvrditi točan poredak transakcija s dionicama.datoteke s dionicama nalaze se na lokalnom serveru ([http://a507-server.local/](http://a507-server.local/)) podatke smo downloadali pomoću **wget** programa.
 
-Sam Ključ je naše ime i prezime,cilj nam je izlistati savjete kronološki
+Sam Ključ je naše ime i prezime,cilj nam je izlistati savjete kronološki.
 
 Prilikom usporebi MAC-a iz datoteka .sig i.txt su identični poruka je zadržala integritet.Ovaj dio koda provjeravamo pomoću "h.verify(signature)" jer sama usporedba MAC-ova nije dovoljna.
 
