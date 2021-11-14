@@ -23,7 +23,7 @@ if __name__ == "__main__":
     message = "koji jesam"
     MAC = generate_MAC(key, message)
 
-		print(MAC)
+    print(MAC)
 ```
 
 **Output:**
