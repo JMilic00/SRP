@@ -23,7 +23,7 @@ if __name__ == "__main__":
     message = "koji jesam"
     MAC = generate_MAC(key, message)
 
-    print(MAC)
+		print(MAC)
 ```
 
 **Output:**
@@ -109,14 +109,14 @@ if __name__ == "__main__":
     # MAC = generate_MAC(key, content)
 
     # with open("doc.sig", "wb") as file:
-    #     file.write(MAC)
+	  # file.write(MAC)
 ```
 
 **IZAZAOV 2.**
 
-Sljedeći zadatak*(*izazov) je utvrditi točan poredak transakcija s dionicama.datoteke s dionicama nalaze se na lokalnom serveru ([http://a507-server.local/](http://a507-server.local/)) podatke smo downloadali pomoću **wget** programa.
+Sljedeći zadatak*(*izazov) je utvrditi točan poredak transakcija s dionicama.datoteke s dionicama nalaze se na lokalnom serveru ([http://a507-server.local/](http://a507-server.local/)) podatek smo downloadali pomocu **wget** programa.
 
-Sam Ključ je naše ime i prezime,cilj nam je izlistati savjete kronološki.
+Sam Ključ je naše ime i prezime,cilj nam je izlistati savjete kronološki
 
 Prilikom usporebi MAC-a iz datoteka .sig i.txt su identični poruka je zadržala integritet.Ovaj dio koda provjeravamo pomoću "h.verify(signature)" jer sama usporedba MAC-ova nije dovoljna.
 
@@ -150,7 +150,7 @@ def verify_MAC(key, signature, message):
         return True
 
 if __name__ == "__main__":
-	#LOOP ZA ŠETANJE
+		#LOOP ZA ŠETANJE
     **for ctr in range(1,11):
         msg_filename = f"order_{ctr}.txt"
         sig_filename = f"order_{ctr}.sig"
@@ -159,8 +159,66 @@ if __name__ == "__main__":
         with open(sig_filename, "rb") as file:
             signature = file.read() 
 
-        key = "milic_jakov".encode()
+        key = "Milic_jakov".encode()
         is_authentic = verify_MAC(key, signature, content)
         
-	print(f'Message {content.decode():>45} {"OK" if is_authentic else "NOK":<6**
+				print(f'Message {content.decode():>45} {"OK" if is_authentic else "NOK":<6**
 ```
+
+Završni izazov bio je dovršiti kod za provjeru digitalng potpisa.
+
+Koristimo javne i privatne kljuceve,s javnim kljucem denkriptiramo poruku koja je enkripitara od strane osobe s privatnim ključem.Potpis mora biti identičan potpisu sa slike.
+
+K**od za verifikaciju i učitavanje public keya** 
+
+```bash
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives import hashes
+from cryptography.exceptions import InvalidSignature
+
+def load_public_key():
+    with open("public.pem", "rb") as f:
+        PUBLIC_KEY = serialization.load_pem_public_key(
+            f.read(),
+            backend=default_backend()
+        )
+    return PUBLIC_KEY
+
+def verify_signature_rsa(signature, message):
+    PUBLIC_KEY = load_public_key()
+    try:
+        PUBLIC_KEY.verify(
+            signature,
+            message,
+            padding.PSS(
+                mgf=padding.MGF1(hashes.SHA256()),
+                salt_length=padding.PSS.MAX_LENGTH
+            ),
+            hashes.SHA256()
+        )
+    except InvalidSignature:
+        return False
+    else:
+        return True
+
+if __name__ == "__main__":
+
+    with open("image_1.png", "rb") as file:
+        image = file.read()
+
+    with open("image_1.sig", "rb") as file:
+        sig = file.read()
+
+    with open("image_2.png", "rb") as file:
+        image2 = file.read()
+
+    with open("image_2.sig", "rb") as file:
+        sig2 = file.read()
+
+    print(verify_signature_rsa(sig,image))
+    print(verify_signature_rsa(sig2,image2))
+```
+
+Rezultat u command promptu je 'false' pa 'true'
